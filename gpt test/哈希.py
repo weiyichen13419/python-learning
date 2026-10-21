@@ -21,8 +21,8 @@ def two_sum(nums: list[int], target: int) -> list[int]:
         need = target - num
         if need in seen:
            return [seen[need], i]
-        else:
-            seen[num] = i
+
+        seen[num] = i
 
 assert two_sum([2, 7, 11, 15], 9) == [0, 1]
 assert two_sum([3, 2, 4], 6) == [1, 2]
