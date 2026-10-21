@@ -21,4 +21,12 @@ def test_negative():
 
 def test_different_counts():
     result = intersect_min([5, 5, 5, 1] ,[5, 5, 1, 1, 1])
-    assert sorted(result) == [1,5, 5]
+    assert sorted(result) == [1,5,5]
+
+def test_swapped_inputs():
+    nums1 = [1, 2, 2, 3]
+    nums2 = [2, 2, 4]
+    result=intersect_min(nums1, nums2)
+    assert sorted(result) == [2,2]
+    result=intersect_min(nums2, nums1)
+    assert sorted(result) == [2, 2]
