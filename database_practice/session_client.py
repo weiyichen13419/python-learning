@@ -19,9 +19,15 @@ import requests
 # print(response.status_code)
 # print(response.json())
 
-session=requests.Session()
-session.cookies.set("session_id","lesson80")
 
-response=session.get("http://127.0.0.1:8000/cookie-info")
-print(response.status_code)
-print(response.json())
+# response = session.get("http://127.0.0.1:8000/set-session")
+# print(response.status_code)
+# print(response.json())
+# print(session.cookies.get_dict())
+
+session=requests.Session()
+session.cookies.set("session_id","lesson82")
+session.cookies.set("view_mode","dark")
+print(session.cookies.get_dict())
+session.cookies.pop("session_id",None)
+print(session.cookies.get_dict())
