@@ -34,9 +34,15 @@
 #
 
 
-import requests
-session=requests.Session()
-session.headers.update(
-    {"X-Client-Name":"PythonLesson84"}
-)
-print(session.headers.get("X-Client-Name"))
+# import requests
+# session=requests.Session()
+# session.headers.update(
+#     {"X-Client-Name":"PythonLesson84"}
+# )
+# print(session.headers.get("X-Client-Name"))
+
+import os
+
+# 获取当前目录下所有文件+文件夹名字
+file_list = os.listdir()
+print(file_list)
