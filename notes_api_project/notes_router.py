@@ -20,6 +20,14 @@ class NoteRequest(BaseModel):
             raise ValueError("笔记内容不能为空或只有空格")
         return value.strip()
 
+class NoteResponse(BaseModel):
+    id: int = Field(description="笔记的唯一编号")
+    content: str = Field(description="笔记正文内容")
+
+# 参数	                   作用
+# min_length=1	    校验字符串的最小长度
+# description="..."	给字段添加说明，供文档等使用
+
 @router.post("",status_code=201)
 def create_note(note:NoteRequest):
     conn = sqlite3.connect(db_path)
@@ -54,7 +62,7 @@ def delete_note(note_id:int):
         else:
             return {"affected":affected,"id":note_id}
 
-@router.get("/{note_id}")
+@router.get("/{note_id}",response_model=NoteResponse,summary="根据ID查询笔记详情",responses={404:{"description":"笔记不存在"}})
 def detail_note(note_id:int):
     conn = sqlite3.connect(db_path)
     try:
